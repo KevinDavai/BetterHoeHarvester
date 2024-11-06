@@ -35,7 +35,7 @@ public class BasicChangeCropsCommand implements CommandHandler {
             return;
         }
 
-        if(!WorldGuardUtils.isPlayerInRegion(player, "BetterHoeHarvester")) {
+        if(!WorldGuardUtils.isPlayerInTheRegion(player, "BetterHoeHarvester")) {
             sender.sendMessage(ChatColor.RED + "You must be in the BetterHoeHarvester region to use this command.");
             return;
         }

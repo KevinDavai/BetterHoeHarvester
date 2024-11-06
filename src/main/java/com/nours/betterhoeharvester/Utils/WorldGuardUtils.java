@@ -8,7 +8,7 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.entity.Player;
 
 public class WorldGuardUtils {
-    public static boolean isPlayerInRegion(Player player, String regionName) {
+    public static boolean isPlayerInTheRegion(Player player, String regionName) {
         RegionManager regionManager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(player.getWorld()));
 
         if(regionManager == null) {

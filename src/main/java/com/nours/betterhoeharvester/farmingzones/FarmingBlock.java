@@ -27,8 +27,4 @@ public class FarmingBlock {
     public long getDestroyTime() {
         return destroyTime;
     }
-
-    public void setDestroyTime(long destroyTime) {
-        this.destroyTime = destroyTime;
-    }
 }

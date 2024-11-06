@@ -11,12 +11,6 @@ import java.util.List;
 
 public class AdminReloadCommand implements CommandHandler {
 
-    private final BetterHoeHarvester plugin;
-
-    public AdminReloadCommand(BetterHoeHarvester plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public void handle(CommandSender sender, String[] args) {
         sender.sendMessage(ChatColor.GRAY + "Reloading BetterHoeHarvester configuration...");

@@ -27,7 +27,7 @@ public class CropsBreakListener implements Listener {
         Block block = event.getBlock();
         Player player = event.getPlayer();
 
-        if(!WorldGuardUtils.isPlayerInRegion(player, "BetterHoeHarvester")) {
+        if(!WorldGuardUtils.isPlayerInTheRegion(player, "BetterHoeHarvester")) {
             return;
         }
 
