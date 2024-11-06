@@ -1,6 +1,5 @@
 package com.nours.betterhoeharvester.farmingzones;
 
-import com.nours.betterhoeharvester.BetterHoeHarvester;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,11 +16,9 @@ import java.util.Map;
 public class FarmingZoneThread extends BukkitRunnable {
 
     private final FarmingBlockManager farmingBlockManager;
-    private final BetterHoeHarvester plugin;
 
-    public FarmingZoneThread(FarmingBlockManager farmingBlockManager, BetterHoeHarvester plugin) {
+    public FarmingZoneThread(FarmingBlockManager farmingBlockManager) {
         this.farmingBlockManager = farmingBlockManager;
-        this.plugin = plugin;
     }
 
     @Override

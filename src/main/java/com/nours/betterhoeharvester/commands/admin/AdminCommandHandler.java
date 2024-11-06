@@ -1,6 +1,5 @@
 package com.nours.betterhoeharvester.commands.admin;
 
-import com.nours.betterhoeharvester.BetterHoeHarvester;
 import com.nours.betterhoeharvester.commands.BaseCommandManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
