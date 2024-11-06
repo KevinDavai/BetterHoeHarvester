@@ -36,7 +36,7 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
         farmingBlockManager = new FarmingBlockManager(this);
         farmingBlockManager.collectWheatBlocksInRegion("BetterHoeHarvester");
 
-        FarmingZoneThread farmingZoneThread = new FarmingZoneThread(farmingBlockManager, this);
+        FarmingZoneThread farmingZoneThread = new FarmingZoneThread(farmingBlockManager);
 
         getServer().getPluginManager().registerEvents(new CropsBreakListener(this), this);
         protocolManager.addPacketListener(new BlockChangePacketListener(this));
