@@ -7,7 +7,7 @@ import java.util.UUID;
 public class FarmingBlock {
     private final Material material;
     private final UUID player;
-    private long destroyTime;
+    private final long destroyTime;
 
     public FarmingBlock(Material material, UUID player) {
         System.out.println("material  " + material);

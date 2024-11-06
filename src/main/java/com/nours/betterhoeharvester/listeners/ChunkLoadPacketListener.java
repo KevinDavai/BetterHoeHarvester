@@ -40,8 +40,6 @@ public class ChunkLoadPacketListener extends PacketAdapter {
         int chunkX = event.getPacket().getIntegers().read(0);
         int chunkZ = event.getPacket().getIntegers().read(1);
         Chunk chunk = world.getChunkAt(chunkX, chunkZ);
-        int playerY = player.getLocation().getBlockY(); // Use the player's current Y level=
-
 
         // Récupérer la région `BetterHoeHarvester` à vérifier
         ProtectedRegion region = regionManager.getRegion("BetterHoeHarvester");

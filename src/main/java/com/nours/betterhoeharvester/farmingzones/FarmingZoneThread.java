@@ -42,7 +42,6 @@ public class FarmingZoneThread extends BukkitRunnable {
 
                     Player p = Bukkit.getPlayer(farmingBlock.getPlayer());
 
-                    Material actualSelectedMaterial = plugin.getFarmingBlockManager().getPlayerSelectedFarmingBlock(p);
                     BlockData blockData = material.createBlockData();
 
                     if(blockData instanceof Ageable ageable) {

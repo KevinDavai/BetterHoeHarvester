@@ -1,6 +1,5 @@
 package com.nours.betterhoeharvester.commands.admin;
 
-import com.nours.betterhoeharvester.BetterHoeHarvester;
 import com.nours.betterhoeharvester.commands.CommandHandler;
 import com.nours.betterhoeharvester.commands.TabHelper;
 import org.bukkit.ChatColor;

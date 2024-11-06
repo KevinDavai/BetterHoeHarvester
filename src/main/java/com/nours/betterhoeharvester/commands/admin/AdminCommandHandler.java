@@ -9,11 +9,11 @@ import javax.annotation.Nullable;
 
 public class AdminCommandHandler extends BaseCommandManager {
 
-    public AdminCommandHandler(BetterHoeHarvester plugin) {
+    public AdminCommandHandler() {
         super(1);
 
         // Register admin-related subcommands
-        subcommands.put("reload", new AdminReloadCommand(plugin));
+        subcommands.put("reload", new AdminReloadCommand());
     }
 
     @Override
