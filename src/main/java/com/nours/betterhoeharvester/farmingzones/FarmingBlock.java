@@ -10,7 +10,6 @@ public class FarmingBlock {
     private final long destroyTime;
 
     public FarmingBlock(Material material, UUID player) {
-        System.out.println("material  " + material);
         this.material = material;
         this.player = player;
         this.destroyTime = System.currentTimeMillis();

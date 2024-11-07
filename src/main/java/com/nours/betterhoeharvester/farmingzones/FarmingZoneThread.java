@@ -36,6 +36,13 @@ public class FarmingZoneThread extends BukkitRunnable {
 
                 if (currentTime - farmingBlock.getDestroyTime() >= 4000) {
                     Material material = farmingBlock.getMaterial();
+                    Player player = Bukkit.getPlayer(farmingBlock.getPlayer());
+                    Material selectedMaterial = farmingBlockManager.getPlayerSelectedFarmingBlock(player);
+
+                    if(material != selectedMaterial) {
+                        material = selectedMaterial;
+                    }
+
 
                     Player p = Bukkit.getPlayer(farmingBlock.getPlayer());
 

@@ -67,6 +67,7 @@ public class FarmingBlockManager {
             RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
             RegionManager regions = container.get(BukkitAdapter.adapt(world));
 
+
             if (regions == null) {
                 continue; // Skip this world if it doesn't have a region manager
             }
@@ -79,6 +80,9 @@ public class FarmingBlockManager {
             // Get the region object
             ProtectedRegion region = regions.getRegion(regionName);
 
+            int counter = 0;
+            long memoryBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
             // Iterate through the blocks in the region's bounding box
             for (int x = region.getMinimumPoint().getBlockX(); x <= region.getMaximumPoint().getBlockX(); x++) {
                 for (int y = region.getMinimumPoint().getBlockY(); y <= region.getMaximumPoint().getBlockY(); y++) {
@@ -90,7 +94,7 @@ public class FarmingBlockManager {
                         if (block.getType() == Material.WHEAT) {
                             BlockState blockState = block.getState();  // Get the block's state
                             Chunk chunk = block.getChunk();
-
+                            counter++;
                             // Add the blockState to the map of chunkBlockStates
                             chunkBlockStates.computeIfAbsent(chunk, k -> new HashSet<>()).add(blockState);
                         }
@@ -98,7 +102,12 @@ public class FarmingBlockManager {
                 }
             }
 
-            plugin.getLogger().info("Collected " + chunkBlockStates.size() + " Wheat blocks in region " + regionName + " in world " + world.getName());
+
+            long memoryAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+            long memoryUsed = memoryAfter - memoryBefore;
+            System.out.println("Approximate memory used by chunkBlockStates: " + memoryUsed + " bytes");
+
+            plugin.getLogger().info("Collected " + chunkBlockStates.size() + " chunk and " +  counter + " block states in the region " + regionName);
         }
     }
 
@@ -174,7 +183,10 @@ public class FarmingBlockManager {
             if (playerChunk.equals(chunk) || isChunkInRange(player, chunk)) {
                 // Loop through block states in this chunk
                 for (BlockState state : blockStatesInChunk) {
-                    // Set the updated block data for each block state
+                    if (this.brokenBlocks.containsKey(state.getLocation())) {
+                        continue;
+                    }
+
                     state.setBlockData(updatedBlockData);
                     blockStatesToUpdate.add(state); // Add the updated block state to the list
                 }
