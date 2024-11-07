@@ -19,7 +19,6 @@ import java.util.*;
 public class BasicChangeCropsCommand implements CommandHandler {
     private final BetterHoeHarvester plugin;
 
-
     public BasicChangeCropsCommand(BetterHoeHarvester plugin) {
         this.plugin = plugin;
     }

@@ -3,6 +3,7 @@ package com.nours.betterhoeharvester;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.nours.betterhoeharvester.commands.basic.BasicCommandHandler;
+import com.nours.betterhoeharvester.configs.ConfigManager;
 import com.nours.betterhoeharvester.farmingzones.FarmingBlockManager;
 import com.nours.betterhoeharvester.farmingzones.FarmingZoneThread;
 import com.nours.betterhoeharvester.listeners.BlockChangePacketListener;
@@ -22,6 +23,8 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
 
     private final BasicCommandHandler commandManager = new BasicCommandHandler(this);
 
+    private ConfigManager configManager;
+
 
     @Override
     public void onLoad() {
@@ -36,6 +39,9 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
         farmingBlockManager = new FarmingBlockManager(this);
         farmingBlockManager.collectWheatBlocksInRegion("BetterHoeHarvester");
 
+        configManager = new ConfigManager(this);
+        configManager.loadAllConfigs();
+
         FarmingZoneThread farmingZoneThread = new FarmingZoneThread(farmingBlockManager);
 
         getServer().getPluginManager().registerEvents(new CropsBreakListener(this), this);
@@ -46,6 +52,8 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
 
         farmingZoneThread.runTaskTimer(this, 0, 20L);
 
+        log("Basic config " + configManager.getBasicConfig().getExampleSetting());
+        log("Crops config " + configManager.getCropsConfig().getExampleSetting());
     }
 
 
@@ -72,5 +80,9 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
 
     public FarmingBlockManager getFarmingBlockManager() {
         return farmingBlockManager;
+    }
+
+    public ConfigManager getConfigManager() {
+        return configManager;
     }
 }

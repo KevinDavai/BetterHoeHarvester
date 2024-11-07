@@ -1,5 +1,6 @@
 package com.nours.betterhoeharvester.commands.admin;
 
+import com.nours.betterhoeharvester.BetterHoeHarvester;
 import com.nours.betterhoeharvester.commands.BaseCommandManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -8,11 +9,11 @@ import javax.annotation.Nullable;
 
 public class AdminCommandHandler extends BaseCommandManager {
 
-    public AdminCommandHandler() {
+    public AdminCommandHandler(BetterHoeHarvester plugin) {
         super(1);
-
+        
         // Register admin-related subcommands
-        subcommands.put("reload", new AdminReloadCommand());
+        subcommands.put("reload", new AdminReloadCommand(plugin));
     }
 
     @Override

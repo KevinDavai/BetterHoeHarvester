@@ -39,10 +39,9 @@ public class FarmingZoneThread extends BukkitRunnable {
                     Player player = Bukkit.getPlayer(farmingBlock.getPlayer());
                     Material selectedMaterial = farmingBlockManager.getPlayerSelectedFarmingBlock(player);
 
-                    if(material != selectedMaterial) {
+                    if(selectedMaterial != null && material != selectedMaterial) {
                         material = selectedMaterial;
                     }
-
 
                     Player p = Bukkit.getPlayer(farmingBlock.getPlayer());
 

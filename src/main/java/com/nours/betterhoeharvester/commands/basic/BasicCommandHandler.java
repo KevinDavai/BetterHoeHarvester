@@ -23,7 +23,7 @@ public class BasicCommandHandler extends BaseCommandManager implements TabExecut
         this.plugin = plugin;
 
         // Register subcommands
-        subcommands.put("admin", new AdminCommandHandler());
+        subcommands.put("admin", new AdminCommandHandler(plugin));
 
         // Register condense subcommand
         subcommands.put("changecrops", new BasicChangeCropsCommand(plugin));
