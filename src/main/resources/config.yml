@@ -1,1 +1,33 @@
-example-config-yml: "test"
+# Time in seconds before crops respawn after breaking
+crops-respawn-delay: 4
+
+# Drop items directly into the player's inventory
+straight-to-inventory: true
+
+# Drop items if the player's inventory is full
+drop-items-if-full-inventory: true
+
+#
+
+particles:
+  break-crops:
+    enabled: true
+    particle: HAPPY_VILLAGER
+  respawn-crops:
+    enabled: true
+    particle: HAPPY_VILLAGER
+
+sounds:
+  break-crops:
+    enabled: true
+    sound: BLOCK_NOTE_BLOCK_PLING
+    volume: 1
+    pitch: 1
+
+inventory-full-title:
+  enabled: true
+  title: '&4&l[!] &c&lINVENTORY'
+  subtitle: '&7&o(( Your inventory is full! ))'
+  fadeIn: 20
+  fadeOut: 20
+  time: 80

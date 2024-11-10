@@ -28,7 +28,7 @@ public abstract class AbstractConfig {
         config = CommentedConfiguration.loadConfiguration(file);
 
         try {
-            config.syncWithConfig(file, plugin.getResource(configFileName));
+            config.syncWithConfig(file, plugin.getResource(configFileName), ignoredSections);
         } catch (Exception e) {
             plugin.getLogger().log(Level.SEVERE, "Error while syncing the config file " + configFileName, e);
         }

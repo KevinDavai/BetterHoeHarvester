@@ -22,8 +22,6 @@ public class AdminReloadCommand implements CommandHandler {
         sender.sendMessage(ChatColor.GRAY + "Reloading BetterHoeHarvester configuration...");
         plugin.getConfigManager().reloadAllConfigs();
 
-        plugin.getLogger().info("Basic config " + plugin.getConfigManager().getBasicConfig().getExampleSetting());
-        plugin.getLogger().info("Crops config " + plugin.getConfigManager().getCropsConfig().getExampleSetting());
         sender.sendMessage(ChatColor.GREEN + "BetterHoeHarvester configuration successfully reloaded.");
     }
 

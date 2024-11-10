@@ -39,8 +39,9 @@ public class FarmingBlockManager {
         return playerSelectedFarmingBlock.get(player);
     }
 
-    public void addPlayerSelectedFarmingBlock(Player player, Material material) {
+    public Material addPlayerSelectedFarmingBlock(Player player, Material material) {
         playerSelectedFarmingBlock.put(player, material);
+        return material;
     }
 
     public List<FarmingBlock> getBlocksAtLocation(Location location) {
@@ -183,9 +184,10 @@ public class FarmingBlockManager {
             if (playerChunk.equals(chunk) || isChunkInRange(player, chunk)) {
                 // Loop through block states in this chunk
                 for (BlockState state : blockStatesInChunk) {
-                    if (this.brokenBlocks.containsKey(state.getLocation())) {
+                    if (this.brokenBlocks.containsKey(state.getLocation()) && this.brokenBlocks.get(state.getLocation()).stream().anyMatch(farmingBlock -> farmingBlock.getPlayer().equals(player.getUniqueId()))) {
                         continue;
                     }
+
 
                     state.setBlockData(updatedBlockData);
                     blockStatesToUpdate.add(state); // Add the updated block state to the list

@@ -37,7 +37,8 @@ public class BlockChangePacketListener extends PacketAdapter {
             // Check if any FarmingBlock at this location hasn't respawned yet
             for (FarmingBlock farmingBlock : blocksAtLocation) {
                 if(farmingBlock.getPlayer() == event.getPlayer().getUniqueId()) {
-                    if (System.currentTimeMillis() < farmingBlock.getDestroyTime() + 4000) {
+                    int respawnDelay = plugin.getConfigManager().getBasicConfig().getCropsRespawnDelay();
+                    if (System.currentTimeMillis() < farmingBlock.getDestroyTime() + respawnDelay * 1000L) {
                         // Cancel the event if the respawn time has not ended
                         event.setCancelled(true);
                         return; // Exit early since we found a block that hasn't respawned

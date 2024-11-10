@@ -1,0 +1,30 @@
+Custom-Drops:
+  enabled: false
+  # Valid crops: WHEAT, CARROTS, POTATOES, BEETROOTS, NETHER_WART,
+  # TUBE_CORAL, BRAIN_CORAL, BUBBLE_CORAL, FIRE_CORAL, HORN_CORAL,
+  # PEONY, LILAC, ROSE_BUSH, WARPED_ROOTS, CRIMSON_ROOTS
+  crops:
+    WHEAT:
+      '1':
+        name: '&a&lWheat'
+        material: WHEAT
+        lore:
+          - '&7This is a wheat'
+        drop-chance: 1
+      '2':
+        name: '&a&lEnchanted Wheat'
+        material: WHEAT
+        glow: true
+        drop-chance: 0.5
+    CARROTS:
+        '1':
+            name: '&6&lCarrot'
+            material: CARROT
+            lore:
+            - '&7This is a carrot'
+            drop-chance: 1
+        '2':
+            name: '&6&lEnchanted Carrot'
+            material: CARROT
+            glow: true
+            drop-chance: 0.5

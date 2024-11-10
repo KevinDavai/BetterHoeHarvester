@@ -2,20 +2,20 @@ package com.nours.betterhoeharvester.configs;
 
 import com.nours.betterhoeharvester.BetterHoeHarvester;
 import com.nours.betterhoeharvester.configs.cfg.BasicConfig;
-import com.nours.betterhoeharvester.configs.cfg.CropsConfig;
+import com.nours.betterhoeharvester.configs.cfg.CustomDropConfig;
 
 public class ConfigManager {
     private final BasicConfig basicConfig;
-    private final CropsConfig cropsConfig;
+    private final CustomDropConfig customDropConfig;
 
     public ConfigManager(BetterHoeHarvester plugin) {
-        basicConfig = new BasicConfig(plugin, "config.yml", null);
-        cropsConfig = new CropsConfig(plugin, "crops.yml", null);
+        basicConfig = new BasicConfig(plugin, "config.yml");
+        customDropConfig = new CustomDropConfig(plugin, "customdrop.yml");
     }
 
     public void loadAllConfigs() {
         basicConfig.loadConfig();
-        cropsConfig.loadConfig();
+        customDropConfig.loadConfig();
     }
 
     public void reloadAllConfigs() {
@@ -26,7 +26,7 @@ public class ConfigManager {
         return basicConfig;
     }
 
-    public CropsConfig getCropsConfig() {
-        return cropsConfig;
+    public CustomDropConfig getCustomDropConfig() {
+        return customDropConfig;
     }
 }

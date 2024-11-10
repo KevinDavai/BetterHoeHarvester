@@ -4,6 +4,7 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.nours.betterhoeharvester.commands.basic.BasicCommandHandler;
 import com.nours.betterhoeharvester.configs.ConfigManager;
+import com.nours.betterhoeharvester.customdrops.CustomDropManager;
 import com.nours.betterhoeharvester.farmingzones.FarmingBlockManager;
 import com.nours.betterhoeharvester.farmingzones.FarmingZoneThread;
 import com.nours.betterhoeharvester.listeners.BlockChangePacketListener;
@@ -20,6 +21,7 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
     private ProtocolManager protocolManager;
 
     private FarmingBlockManager farmingBlockManager;
+    private CustomDropManager customDropManager;
 
     private final BasicCommandHandler commandManager = new BasicCommandHandler(this);
 
@@ -39,10 +41,12 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
         farmingBlockManager = new FarmingBlockManager(this);
         farmingBlockManager.collectWheatBlocksInRegion("BetterHoeHarvester");
 
+        customDropManager = new CustomDropManager(this);
+
         configManager = new ConfigManager(this);
         configManager.loadAllConfigs();
 
-        FarmingZoneThread farmingZoneThread = new FarmingZoneThread(farmingBlockManager);
+        FarmingZoneThread farmingZoneThread = new FarmingZoneThread(farmingBlockManager, this);
 
         getServer().getPluginManager().registerEvents(new CropsBreakListener(this), this);
         protocolManager.addPacketListener(new BlockChangePacketListener(this));
@@ -51,9 +55,6 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
         this.commandManager.loadCommand();
 
         farmingZoneThread.runTaskTimer(this, 0, 20L);
-
-        log("Basic config " + configManager.getBasicConfig().getExampleSetting());
-        log("Crops config " + configManager.getCropsConfig().getExampleSetting());
     }
 
 
@@ -84,5 +85,9 @@ public final class BetterHoeHarvester extends JavaPlugin implements Listener {
 
     public ConfigManager getConfigManager() {
         return configManager;
+    }
+
+    public CustomDropManager getCustomDropManager() {
+        return customDropManager;
     }
 }
